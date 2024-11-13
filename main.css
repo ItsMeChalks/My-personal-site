@@ -58,7 +58,7 @@
      margin-top: 10px;
  }
 
- a {
+ .button {
     display: inline-block;
     margin-top: 50px;
     padding: 10px 20px;
@@ -70,7 +70,7 @@
     text-decoration: none;
  }
 
- a:hover {
+.button:hover {
     background-color: #006699;
  }
 
@@ -79,4 +79,8 @@
     height: 150px;
     display: inline-block;
     border-radius: 50%;
+ }
+
+ a {
+   color: #0099cc;
  }
