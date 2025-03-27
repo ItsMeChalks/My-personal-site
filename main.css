@@ -60,7 +60,7 @@
 
  .button {
     display: inline-block;
-    margin-top: 50px;
+    margin-top: 10px;
     padding: 10px 20px;
     border-radius: 10px;
     background-color: #0099cc;
@@ -83,4 +83,31 @@
 
  a {
    color: #0099cc;
+ }
+
+ form {
+   margin-top: 50px;
+ }
+
+ input[type="text"], input[type="email"], textarea {
+   border: solid 1px #ccc;
+   padding: 15px;
+   font-size: 18px;
+   border-radius: 3px;
+ }
+
+ input[type="submit"] {
+   display: inline-block;
+   margin-top: 10px;
+   padding: 10px 20px;
+   border-radius: 10px;
+   background-color: #0099cc;
+   color: white;
+   font-weight: bold;
+   font-size: 18px;
+   text-decoration: none;
+ }
+
+ input[type="submit"]:hover {
+   background-color: #006699;
  }
