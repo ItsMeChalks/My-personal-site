@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>Danny Franklin</title>
 
-<link rel="stylesheet" type="text/css" href="main.css?v=7">
+<link rel="stylesheet" type="text/css" href="main.css?v=8">
 
 <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet">
 
@@ -96,10 +96,11 @@
         .then(data => {
             const responseMessage = document.getElementById('responseMessage');
             if (data.success) {
-                responseMessage.textContent = "Your message was sent successfully!";
+              document.getElementById('contactForm').reset();
+              responseMessage.textContent = "Your message was sent successfully!";
               grecaptcha.reset();
             } else {
-                responseMessage.textContent = "There was an error sending your message.";
+              responseMessage.textContent = "There was an error sending your message.";
               grecaptcha.reset();
             }
         })

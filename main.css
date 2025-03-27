@@ -123,3 +123,8 @@
    text-align: center;
    min-height: 78px;
  }
+
+ #responseMessage {
+   margin-top: 30px;
+   min-height: 20px;
+ }
