@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>Danny Franklin</title>
 
-<link rel="stylesheet" type="text/css" href="main.css?v=2">
+<link rel="stylesheet" type="text/css" href="main.css?v=3">
 
 <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet">
 
@@ -47,23 +47,13 @@
         </picture>
         <h1>Danny Franklin</h1>
         <p>Some guy.</p>
-        <a href="https://daccaa.com" target="_blank" class="button">Need a website?</a>
       </div>
       <form id="contactForm">
-        <label for="contact_name">Name:</label>
-        <input type="text" id="contact_name" name="contact_name" required><br><br>
-      
-        <label for="contact_email">Email:</label>
-        <input type="email" id="contact_email" name="contact_email" required><br><br>
-      
-        <label for="contact_message">Message:</label><br>
-        <textarea id="contact_message" name="contact_message" rows="4" required></textarea><br><br>
-      
+        <input type="text" id="contact_name" name="contact_name" placeholder="Name" required><br><br>
+        <input type="email" id="contact_email" name="contact_email" placeholder="Email" required><br><br>
+        <textarea id="contact_message" name="contact_message" rows="4" placeholder="Message" required></textarea><br><br>
         <input type="hidden" id="website" name="website" value="franklin.uk">
-      
-        <!-- Google reCAPTCHA -->
         <div class="g-recaptcha" data-sitekey="6Lcaz_8qAAAAAEsHFY_PzjBoB7eOmFlGwGsK5WpG"></div><br>
-      
         <input type="submit" value="Send Message">
       </form>
       
