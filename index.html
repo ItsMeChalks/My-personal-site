@@ -40,38 +40,38 @@
 <body>
   <div class="main">
     <div class="holder">
-      <picture class="me">
-        <source srcset="me-300.webp" type="image/webp">
-        <img src="me-300.png" alt="A picture of me">
-      </picture>
-      <h1>Danny Franklin</h1>
-      <p>Coding, learning German, and adding a sprinkle of British humour (where I can) — all while embracing my entrepreneurial adventures. Also a laird/lord thanks to Scottish land ownership - (<a href="assets/certificate.pdf" target="_blank">certificate</a>).</p>
-      <a href="https://daccaa.com" target="_blank" class="button">Need a website?</a> 
+      <div class="about">
+        <picture class="me">
+          <source srcset="me-300.webp" type="image/webp">
+          <img src="me-300.png" alt="A picture of me">
+        </picture>
+        <h1>Danny Franklin</h1>
+        <p>Coding, learning German, and adding a sprinkle of British humour (where I can) — all while embracing my
+          entrepreneurial adventures. Also a laird/lord thanks to Scottish land ownership - (<a href="assets/certificate.pdf"
+            target="_blank">certificate</a>).</p>
+        <a href="https://daccaa.com" target="_blank" class="button">Need a website?</a>
+      </div>
+      <form id="contactForm">
+        <label for="contact_name">Name:</label>
+        <input type="text" id="contact_name" name="contact_name" required><br><br>
+      
+        <label for="contact_email">Email:</label>
+        <input type="email" id="contact_email" name="contact_email" required><br><br>
+      
+        <label for="contact_message">Message:</label><br>
+        <textarea id="contact_message" name="contact_message" rows="4" required></textarea><br><br>
+      
+        <input type="hidden" id="website" name="website" value="franklin.uk">
+      
+        <!-- Google reCAPTCHA -->
+        <div class="g-recaptcha" data-sitekey="6Lcaz_8qAAAAAEsHFY_PzjBoB7eOmFlGwGsK5WpG"></div><br>
+      
+        <input type="submit" value="Send Message">
+      </form>
+      
+      <div id="responseMessage"></div>
     </div>
   </div>
-
-  <form id="contactForm">
-    <label for="contact_name">Name:</label>
-    <input type="text" id="contact_name" name="contact_name" required><br><br>
-
-    <label for="contact_email">Email:</label>
-    <input type="email" id="contact_email" name="contact_email" required><br><br>
-
-    <label for="contact_phone">Phone (Optional):</label>
-    <input type="tel" id="contact_phone" name="contact_phone"><br><br>
-
-    <label for="contact_message">Message:</label><br>
-    <textarea id="contact_message" name="contact_message" rows="4" required></textarea><br><br>
-    
-    <input type="hidden" id="website" name="website" value="franklin.uk">
-
-    <!-- Google reCAPTCHA -->
-    <div class="g-recaptcha" data-sitekey="6Lcaz_8qAAAAAEsHFY_PzjBoB7eOmFlGwGsK5WpG"></div><br>
-
-    <input type="submit" value="Send Message">
-  </form>
-
-  <div id="responseMessage"></div>
 
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
