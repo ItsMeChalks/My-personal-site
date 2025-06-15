@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Found My Dog? - Danny Franklin</title>
+    <link rel="stylesheet" href="dog.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="particles"></div>
+    
+    <div class="container">
+        <header class="hero-section">
+            <div class="hero-content">
+                <div class="dog-icon">
+                    <i class="fas fa-dog"></i>
+                </div>
+                <h1 class="fade-in">Have You Found My Cockapoo?</h1>
+                <p class="hero-subtitle fade-in-delay">Thank you so much for taking the time to help reunite me with my beloved companion</p>
+            </div>
+        </header>
+
+        <main>
+            <section class="info-section">
+                <div class="info-grid">
+                    <div class="info-card slide-in-left">
+                        <div class="card-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Beloved Family Member</h3>
+                        <p>This cockapoo is a cherished member of our family. We're incredibly worried and grateful for any help in bringing them home safely.</p>
+                    </div>
+                    
+                    <div class="info-card slide-in-right">
+                        <div class="card-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>Safe Return</h3>
+                        <p>Please keep them safe and comfortable whilst we arrange collection. They're friendly but may be scared or confused.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="contact-section">
+                <div class="contact-header">
+                    <h2 class="section-title">Get In Touch Immediately</h2>
+                    <p class="section-subtitle">Multiple ways to reach me quickly</p>
+                </div>
+
+                <div class="contact-methods">
+                    <div class="contact-method urgent-contact">
+                        <div class="contact-icon pulse">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3>Call Me Now</h3>
+                        <p>The fastest way to reach me</p>
+                        <a href="tel:+44XXXXXXXXX" class="contact-button primary">
+                            <i class="fas fa-phone"></i>
+                            Call Danny
+                        </a>
+                    </div>
+
+                    <div class="social-contacts">
+                        <a href="https://twitter.com/dannyfranklin" class="social-link twitter" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                            <span>@dannyfranklin</span>
+                        </a>
+                        
+                        <a href="mailto:danny@franklin.uk" class="social-link email">
+                            <i class="fas fa-envelope"></i>
+                            <span>danny@franklin.uk</span>
+                        </a>
+                        
+                        <a href="sms:+44XXXXXXXXX" class="social-link sms">
+                            <i class="fas fa-sms"></i>
+                            <span>Text Message</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="form-section">
+                <div class="form-container">
+                    <h2 class="form-title">Send Me Details</h2>
+                    <p class="form-subtitle">Let me know where you found them and your contact details</p>
+                    
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="contact_name" name="contact_name" placeholder="Your Name" required>
+                            <i class="fas fa-user form-icon"></i>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" id="contact_email" name="contact_email" placeholder="Your Email" required>
+                            <i class="fas fa-envelope form-icon"></i>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea id="contact_message" name="contact_message" rows="4" placeholder="Please tell me where you found them, their condition, and the best way to reach you" required></textarea>
+                            <i class="fas fa-comment-dots form-icon"></i>
+                        </div>
+                        
+                        <input type="hidden" id="website" name="website" value="franklin.uk">
+                        
+                        <div class="recaptcha-container">
+                            <div class="g-recaptcha" data-sitekey="6Lcaz_8qAAAAAEsHFY_PzjBoB7eOmFlGwGsK5WpG"></div>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">
+                            <span class="button-text">Send Message</span>
+                            <i class="fas fa-paper-plane button-icon"></i>
+                        </button>
+                    </form>
+                    
+                    <div id="responseMessage" class="response-message"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Danny Franklin | <a href="https://franklin.uk">franklin.uk</a></p>
+            <p class="footer-note">Thank you for being a Good Samaritan</p>
+        </footer>
+    </div>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        // Particle animation for background
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            
+            const animatedElements = document.querySelectorAll('.slide-in-left, .slide-in-right, .fade-in, .fade-in-delay');
+            animatedElements.forEach(el => observer.observe(el));
+        });
+
+        // Form handling
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const submitButton = this.querySelector('.submit-button');
+            const buttonText = submitButton.querySelector('.button-text');
+            const buttonIcon = submitButton.querySelector('.button-icon');
+            
+            // Show loading state
+            submitButton.classList.add('loading');
+            buttonText.textContent = 'Sending...';
+            buttonIcon.className = 'fas fa-spinner fa-spin button-icon';
+            
+            const recaptchaResponse = grecaptcha.getResponse();
+            if (!recaptchaResponse) {
+                showMessage("Please complete the reCAPTCHA.", 'error');
+                resetButton();
+                return;
+            }
+            
+            const formData = {
+                contact_name: document.getElementById('contact_name').value,
+                contact_email: document.getElementById('contact_email').value,
+                contact_message: document.getElementById('contact_message').value,
+                website: document.getElementById('website').value,
+                recaptcha: recaptchaResponse
+            };
+            
+            fetch('https://daccaa.com/api/mail/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('contactForm').reset();
+                    showMessage("Thank you! Your message was sent successfully. I'll get back to you as soon as possible.", 'success');
+                    grecaptcha.reset();
+                } else {
+                    showMessage("There was an error sending your message. Please try calling instead.", 'error');
+                    grecaptcha.reset();
+                }
+                resetButton();
+            })
+            .catch(error => {
+                showMessage("Error: " + error.message + ". Please try calling instead.", 'error');
+                grecaptcha.reset();
+                resetButton();
+            });
+        });
+
+        function resetButton() {
+            const submitButton = document.querySelector('.submit-button');
+            const buttonText = submitButton.querySelector('.button-text');
+            const buttonIcon = submitButton.querySelector('.button-icon');
+            
+            submitButton.classList.remove('loading');
+            buttonText.textContent = 'Send Message';
+            buttonIcon.className = 'fas fa-paper-plane button-icon';
+        }
+
+        function showMessage(message, type) {
+            const responseMessage = document.getElementById('responseMessage');
+            responseMessage.textContent = message;
+            responseMessage.className = `response-message ${type} show`;
+            
+            setTimeout(() => {
+                responseMessage.classList.remove('show');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
