@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>Danny Franklin</title>
+<title>Danny Franklin - Developer & Entrepreneur</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
 <link rel="stylesheet" type="text/css" href="main.css?v=8">
 
@@ -38,78 +39,241 @@
 <link rel="canonical" href="https://franklin.uk">
 </head>
 <body>
-  <div class="main">
-    <div class="holder">
-      <div class="about">
-        <picture class="me">
-          <source srcset="me-300.webp" type="image/webp">
-          <img src="me-300.png" alt="A picture of me">
-        </picture>
-        <h1>Danny Franklin</h1>
-      </div>
-      <form id="contactForm">
-        <input type="text" id="contact_name" name="contact_name" placeholder="Name" required><br><br>
-        <input type="email" id="contact_email" name="contact_email" placeholder="Email" required><br><br>
-        <textarea id="contact_message" name="contact_message" rows="4" placeholder="Message" required></textarea><br><br>
-        <input type="hidden" id="website" name="website" value="franklin.uk">
-        <div class="g-recaptcha" data-sitekey="6Lcaz_8qAAAAAEsHFY_PzjBoB7eOmFlGwGsK5WpG"></div><br>
-        <input type="submit" value="Send Message">
-      </form>
-      
-      <div id="responseMessage"></div>
-    </div>
-  </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">DF</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="title-line">Hello, I'm</span>
+                        <span class="title-line name-highlight">Danny Franklin</span>
+                    </h1>
+                    <p class="hero-subtitle">Developer & Entrepreneur from Stafford</p>
+                    <div class="hero-description">
+                        <p>Building innovative web solutions and iOS apps that empower people through technology.</p>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="#about" class="btn btn-primary">Discover More</a>
+                        <a href="https://x.com/CptCorporate" target="_blank" class="btn btn-secondary">
+                            <i class="fab fa-x-twitter"></i> Follow Me
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-elements">
+                        <div class="floating-icon" data-icon="code">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="floating-icon" data-icon="mobile">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="floating-icon" data-icon="apple">
+                            <i class="fab fa-apple"></i>
+                        </div>
+                        <div class="floating-icon" data-icon="gamepad">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="floating-icon" data-icon="language">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <div class="floating-icon" data-icon="dumbbell">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="scroll-arrow"></div>
+            </div>
+        </div>
+        <div class="hero-bg-animation"></div>
+    </section>
 
-  <script>
-    document.getElementById('contactForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent default form submission
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="about-card">
+                        <h3>Who Am I?</h3>
+                        <p>I'm Danny Franklin, a passionate developer and entrepreneur based in Stafford, UK. I believe strongly in technology's power to empower people and create positive change.</p>
+                        <p>When I'm not coding, you'll find me at the gym, learning German, gaming, or discussing the latest Apple products. I can literally talk for hours about technology!</p>
+                    </div>
+                    <div class="about-companies">
+                        <div class="company-card">
+                            <h4>DACCAA Ltd</h4>
+                            <p>My website development company, creating innovative web solutions with my business partner Ethan Westwood.</p>
+                        </div>
+                        <div class="company-card">
+                            <h4>Westwood Franklin Ltd</h4>
+                            <p>Where the whackier ideas come to life - pushing boundaries and exploring new possibilities.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        // Get the reCAPTCHA response
-        const recaptchaResponse = grecaptcha.getResponse();
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What I Do</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card" data-skill="web">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Creating responsive, modern websites with cutting-edge technologies and frameworks.</p>
+                    <div class="skill-tags">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">React</span>
+                    </div>
+                </div>
+                <div class="skill-card" data-skill="ios">
+                    <div class="skill-icon">
+                        <i class="fab fa-apple"></i>
+                    </div>
+                    <h3>iOS Development</h3>
+                    <p>Building native iOS applications that deliver exceptional user experiences on Apple devices.</p>
+                    <div class="skill-tags">
+                        <span class="tag">Swift</span>
+                        <span class="tag">UIKit</span>
+                        <span class="tag">SwiftUI</span>
+                        <span class="tag">Xcode</span>
+                    </div>
+                </div>
+                <div class="skill-card" data-skill="support">
+                    <div class="skill-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Tech Support</h3>
+                    <p>Providing expert technical support and solutions to help people make the most of their technology.</p>
+                    <div class="skill-tags">
+                        <span class="tag">Troubleshooting</span>
+                        <span class="tag">Systems</span>
+                        <span class="tag">Networking</span>
+                        <span class="tag">Support</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        if (!recaptchaResponse) {
-            alert("Please complete the reCAPTCHA.");
-            return;
-        }
+    <!-- Interests Section -->
+    <section class="interests">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Beyond Code</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="interests-grid">
+                <div class="interest-item">
+                    <div class="interest-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h4>Gaming</h4>
+                    <p>Exploring virtual worlds and the latest gaming technology</p>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h4>Learning German</h4>
+                    <p>Expanding horizons through language learning</p>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h4>Fitness</h4>
+                    <p>Staying active and healthy at the gym</p>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-icon">
+                        <i class="fab fa-apple"></i>
+                    </div>
+                    <h4>Apple Products</h4>
+                    <p>Passionate about Apple's ecosystem and innovation</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        // Collect form data
-        const formData = {
-            contact_name: document.getElementById('contact_name').value,
-            contact_email: document.getElementById('contact_email').value,
-            contact_message: document.getElementById('contact_message').value,
-            website: document.getElementById('website').value,
-            recaptcha: recaptchaResponse // Include the reCAPTCHA token
-        };
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Let's Connect</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="contact-content">
+                <div class="contact-text">
+                    <h3>Ready to collaborate?</h3>
+                    <p>Whether you're looking for web development, iOS apps, or just want to chat about technology, I'd love to hear from you.</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Stafford, United Kingdom</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-globe"></i>
+                            <span>franklin.uk</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://x.com/CptCorporate" target="_blank" class="social-link">
+                        <i class="fab fa-x-twitter"></i>
+                        <span>Follow me on X</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        // Send data to server
-        fetch('https://daccaa.com/api/mail/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            const responseMessage = document.getElementById('responseMessage');
-            if (data.success) {
-              document.getElementById('contactForm').reset();
-              responseMessage.textContent = "Your message was sent successfully!";
-              grecaptcha.reset();
-            } else {
-              responseMessage.textContent = "There was an error sending your message.";
-              grecaptcha.reset();
-            }
-        })
-        .catch(error => {
-            const responseMessage = document.getElementById('responseMessage');
-            responseMessage.textContent = "Error: " + error.message;
-          grecaptcha.reset();
-        });
-    });
-  </script>
-  
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Danny Franklin. Built with passion in Stafford, UK.</p>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
