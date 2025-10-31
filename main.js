@@ -1,0 +1,112 @@
+"use strict";
+
+document.addEventListener("DOMContentLoaded", () => {
+    const nav = document.querySelector(".nav");
+    const menu = document.querySelector(".nav__links");
+    const toggle = document.querySelector(".nav__toggle");
+
+    if (toggle && nav && menu) {
+        const setExpanded = (expanded) => {
+            toggle.setAttribute("aria-expanded", String(expanded));
+            nav.classList.toggle("is-active", expanded);
+        };
+
+        toggle.addEventListener("click", () => {
+            const expanded = toggle.getAttribute("aria-expanded") === "true";
+            setExpanded(!expanded);
+        });
+
+        menu.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+                if (window.innerWidth <= 880) {
+                    setExpanded(false);
+                }
+            });
+        });
+
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 880) {
+                setExpanded(false);
+            }
+        });
+    }
+
+    if (window.gsap && window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const baseDuration = prefersReducedMotion ? 0.01 : 1.05;
+        const baseEase = prefersReducedMotion ? "none" : "power3.out";
+
+        const animateElement = (element) => {
+            const type = element.dataset.animate || "fade";
+            const defaults = {
+                duration: baseDuration,
+                ease: baseEase,
+                autoAlpha: 1
+            };
+
+            let fromVars = { autoAlpha: 0 };
+
+            switch (type) {
+                case "up":
+                    fromVars = { autoAlpha: 0, y: 64 };
+                    break;
+                case "fade":
+                    fromVars = { autoAlpha: 0, y: 24 };
+                    break;
+                case "scale":
+                    fromVars = { autoAlpha: 0, scale: 0.92 };
+                    break;
+                case "blur":
+                    fromVars = { autoAlpha: 0, filter: "blur(14px)", scale: 1.04 };
+                    break;
+                default:
+                    fromVars = { autoAlpha: 0, y: 24 };
+            }
+
+            const timeline = gsap.timeline({
+                defaults,
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 85%",
+                    once: true
+                }
+            });
+
+            timeline.fromTo(element, fromVars, { autoAlpha: 1, y: 0, scale: 1, filter: "none" });
+        };
+
+        gsap.set("[data-animate]", { autoAlpha: 0 });
+        gsap.utils.toArray("[data-animate]").forEach(animateElement);
+
+        const heroTl = gsap.timeline({ defaults: { duration: baseDuration, ease: baseEase } });
+        heroTl
+            .fromTo(".hero__title", { y: 90, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, 0)
+            .fromTo(".hero__lead", { y: 40, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, "-=0.6")
+            .fromTo(".hero__cta", { y: 40, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, "-=0.5")
+            .fromTo(".hero__stats div", { y: 60, autoAlpha: 0 }, {
+                y: 0,
+                autoAlpha: 1,
+                stagger: 0.12
+            }, "-=0.4");
+
+        gsap.to(".orb--left", {
+            xPercent: -10,
+            yPercent: 6,
+            duration: 20,
+            ease: "none",
+            repeat: -1,
+            yoyo: true
+        });
+
+        gsap.to(".orb--right", {
+            xPercent: 8,
+            yPercent: -10,
+            duration: 24,
+            ease: "none",
+            repeat: -1,
+            yoyo: true
+        });
+    }
+});
