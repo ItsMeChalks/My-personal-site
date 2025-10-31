@@ -4,9 +4,38 @@ document.addEventListener("DOMContentLoaded", () => {
     const nav = document.querySelector(".nav");
     const menu = document.querySelector(".nav__links");
     const toggle = document.querySelector(".nav__toggle");
+    const navLinks = Array.from(document.querySelectorAll(".nav__links a[href^=\"#\"]"));
+    const basePath = `${window.location.pathname}${window.location.search}`;
+    const trackedSections = [];
+    const sectionIds = new Set();
+    let activeSectionId = null;
+
+    const setActiveSection = (id) => {
+        if (!id || !sectionIds.has(id) || activeSectionId === id) {
+            return;
+        }
+
+        activeSectionId = id;
+
+        navLinks.forEach((link) => {
+            const linkId = link.getAttribute("href").slice(1);
+            link.classList.toggle("is-active", linkId === id);
+        });
+
+        const desiredHash = `#${id}`;
+        if (window.location.hash !== desiredHash) {
+            if (history.replaceState) {
+                history.replaceState(null, "", `${basePath}${desiredHash}`);
+            } else {
+                window.location.hash = desiredHash;
+            }
+        }
+    };
+
+    let setExpanded = null;
 
     if (toggle && nav && menu) {
-        const setExpanded = (expanded) => {
+        setExpanded = (expanded) => {
             toggle.setAttribute("aria-expanded", String(expanded));
             nav.classList.toggle("is-active", expanded);
         };
@@ -16,19 +45,54 @@ document.addEventListener("DOMContentLoaded", () => {
             setExpanded(!expanded);
         });
 
-        menu.querySelectorAll("a").forEach((link) => {
-            link.addEventListener("click", () => {
-                if (window.innerWidth <= 880) {
-                    setExpanded(false);
-                }
-            });
-        });
-
         window.addEventListener("resize", () => {
             if (window.innerWidth > 880) {
                 setExpanded(false);
             }
         });
+    }
+
+    navLinks.forEach((link) => {
+        const id = link.getAttribute("href").slice(1);
+
+        if (id) {
+            const section = document.getElementById(id);
+            if (section) {
+                trackedSections.push(section);
+                sectionIds.add(id);
+            }
+        }
+
+        link.addEventListener("click", () => {
+            if (setExpanded && window.innerWidth <= 880) {
+                setExpanded(false);
+            }
+
+            if (id) {
+                setActiveSection(id);
+            }
+        });
+    });
+
+    if ("IntersectionObserver" in window && trackedSections.length) {
+        const sectionObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setActiveSection(entry.target.id);
+                    }
+                });
+            },
+            { rootMargin: "-50% 0px -50% 0px", threshold: 0 }
+        );
+
+        trackedSections.forEach((section) => sectionObserver.observe(section));
+    }
+
+    if (window.location.hash && sectionIds.has(window.location.hash.slice(1))) {
+        setActiveSection(window.location.hash.slice(1));
+    } else if (trackedSections.length) {
+        setActiveSection(trackedSections[0].id);
     }
 
     if (window.gsap && window.ScrollTrigger) {
