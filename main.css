@@ -126,6 +126,10 @@ section {
     padding: 0.25rem 0;
 }
 
+.nav__links a.is-active {
+    color: var(--ink);
+}
+
 .nav__links a::after {
     content: "";
     position: absolute;
@@ -140,7 +144,8 @@ section {
 }
 
 .nav__links a:hover::after,
-.nav__links a:focus-visible::after {
+.nav__links a:focus-visible::after,
+.nav__links a.is-active::after {
     transform: scaleX(1);
 }
 
@@ -607,7 +612,7 @@ section {
 .timeline__item::before {
     content: "";
     position: absolute;
-    left: calc(-clamp(1.8rem, 3vw, 2.4rem));
+    left: -15px;
     top: 0.35rem;
     width: 12px;
     height: 12px;
